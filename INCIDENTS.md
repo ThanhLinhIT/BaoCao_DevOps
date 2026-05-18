@@ -1,7 +1,6 @@
 # Incident Demo Guide - QA / SRE Engineer
 
 > Muc tieu: dung 3 incident co the tao loi, xac dinh dung layer, va fix nhanh ngay tai local.
-> File nay la ban chot de khop voi `backend/__tests__/integration.test.js` va `scripts/test-incidents.js`.
 
 ---
 
