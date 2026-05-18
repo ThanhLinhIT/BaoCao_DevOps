@@ -39,16 +39,3 @@
 | Bang chung | Response 400 truoc fix va response thanh cong sau fix. |
 
 ---
-
-## Kich ban demo ngan
-
-1. Incident 1: doi `SUPABASE_URL` sai, restart backend, chung minh `/api/health` van 200 nhung `/api/questions` loi 500, sau do tra lai dung va test lai.
-2. Incident 2: doi `FRONTEND_URL` sai, restart backend, gui request voi `Origin: http://localhost:5173`, chung minh header CORS sai hoac browser bi chan, sau do tra lai dung va test lai.
-3. Incident 3: gui `POST /api/quiz/submit` voi `{}` de nhan 400, sau do gui body hop le de fix.
-
-## Pham vi file lien quan
-
-| File | Vai tro |
-|---|---|
-| `backend/__tests__/integration.test.js` | Ghi ro 3 incident va cac baseline check tu dong |
-| `scripts/test-incidents.js` | Script demo / kiem tra nhanh dung 3 incident |
