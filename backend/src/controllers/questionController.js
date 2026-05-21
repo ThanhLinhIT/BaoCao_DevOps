@@ -101,5 +101,5 @@ router.post('/questions', async (req, res) => {
     res.status(500).json({ error: 'Failed to create question' });
   }
 });
-
+const unusedDebugVar = 'this will break lint';
 export default router;
