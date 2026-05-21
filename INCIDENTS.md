@@ -1,0 +1,37 @@
+# Incident Demo Guide - QA / SRE Engineer
+
+> Muc tieu: dung 3 incident co the tao loi, xac dinh dung layer, va fix nhanh ngay tai local.
+
+---
+
+## Incident 1: `GET /api/questions` tra HTTP 500 do sai `SUPABASE_URL`
+
+| Truong | Noi dung |
+|---|---|
+| Hien tuong | Goi `GET /api/questions` bi 500, trong khi `GET /api/health` van 200 OK. |
+| Layer loi | L2 External (Supabase / DB connection) |
+| Nguyen nhan | Bien `SUPABASE_URL` sai lam backend khong truy cap duoc Supabase. |
+| Cach tao loi de demo | Sua tam `backend/.env`, dat `SUPABASE_URL` thanh gia tri sai, roi restart backend. |
+| Cach fix | Tra lai `SUPABASE_URL` dung, restart backend, goi lai `GET /api/questions` phai tra JSON array. |
+
+## Incident 2: CORS loi do sai `FRONTEND_URL`
+
+| Truong | Noi dung |
+|---|---|
+| Hien tuong | Frontend goi API bi chan boi CORS; browser bao `blocked by CORS policy`. |
+| Layer loi | L3 Backend (CORS middleware / config) |
+| Nguyen nhan | `FRONTEND_URL` khong trung voi origin thuc te cua frontend. |
+| Cach tao loi de demo | Sua tam `backend/.env`, dat `FRONTEND_URL=http://localhost:9999`, roi restart backend. |
+| Cach fix | Tra lai `FRONTEND_URL=http://localhost:5173`, restart backend, kiem tra lai header CORS. |
+
+## Incident 3: `POST /api/quiz/submit` tra 400 khi body thieu truong bat buoc
+
+| Truong | Noi dung |
+|---|---|
+| Hien tuong | Submit quiz nhung backend tra `400 Bad Request`. |
+| Layer loi | L3 Backend (validation) |
+| Nguyen nhan | Request body thieu `playerName` hoac `answers`. |
+| Cach tao loi de demo | Gui body rong `{}` hoac chi gui mot phan du lieu. |
+| Cach fix | Gui body hop le, co `playerName` va `answers`. |
+
+---
